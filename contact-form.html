@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Links & Contact</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 12px 20px;
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    .link-btn:hover {
+      background: #1abc9c;
+      color: #0f2027;
+      box-shadow: 0 6px 12px #1abc9c;
+    }
+    form, .thank-you {
+      background: rgba(255 255 255 / 0.1);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+    input, button {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+    input {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    input:focus {
+      box-shadow: 0 0 10px #1abc9c;
+      background: rgba(255,255,255,0.2);
+    }
+    button {
+      background: #1abc9c;
+      color: #0f2027;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #16a085;
+    }
+    .thank-you {
+      display: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1abc9c;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .loader {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid #1abc9c;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+      display: none;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Links</h1>
+  <div class="links">
+    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="link-btn">LinkedIn</a>
+    <a href="https://github.com/your-username" target="_blank" class="link-btn">GitHub</a>
+    <a href="mailto:your-email@example.com" class="link-btn">Email</a>
+    <a href="https://open.spotify.com/playlist/your-playlist-id" target="_blank" class="link-btn">Spotify Playlist</a>
+    <a href="https://discord.gg/your-server-link" target="_blank" class="link-btn">Discord Server</a>
+  </div>
+
+  <form id="contactForm">
+    <input type="text" name="entry.1327884208" placeholder="Your Name" required>
+    <input type="email" name="entry.996882" placeholder="Your Email" required>
+    <input type="tel" name="entry.2034252756" placeholder="Your Phone" required>
+    <button type="submit">Send</button>
+    <div class="loader" id="loader"></div>
+  </form>
+
+  <div class="thank-you" id="thankYouMessage">
+    Thank you! Your message has been sent successfully.
+  </div>
+
+  <script>
+    const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSeXliEceG3Clg3SDQ13khBnU6uTmpS7xz0duDE1GOXT-6NEew/formResponse';
+    const form = document.getElementById('contactForm');
+    const thankYou = document.getElementById('thankYouMessage');
+    const loader = document.getElementById('loader');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      loader.style.display = 'block';
+      const formData = new FormData(form);
+
+      fetch(googleFormURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        loader.style.display = 'none';
+        form.style.display = 'none';
+        thankYou.style.display = 'block';
+        form.reset();
+      }).catch(() => {
+        loader.style.display = 'none';
+        thankYou.textContent = 'Error sending message, please try again.';
+        thankYou.style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
