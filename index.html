@@ -60,6 +60,35 @@ button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 20px var(--pr
 .notification.success{background:var(--success);}
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .particle-burst{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--primary);pointer-events:none;z-index:9999;}
+
+/* Footer CSS */
+.footer{
+  width:100%;
+  padding:20px 0;
+  margin-top:50px;
+  text-align:center;
+  color:var(--gray);
+  font-size:0.9rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+.footer-links{
+  display:flex;
+  gap:15px;
+}
+.footer-links a{
+  color:var(--light);
+  font-size:1.2rem;
+  transition:var(--transition);
+}
+.footer-links a:hover{
+  color:var(--primary);
+  text-shadow:var(--neon);
+  transform:scale(1.2);
+}
 </style>
 </head>
 <body>
@@ -103,11 +132,22 @@ button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 20px var(--pr
 </div>
 </div>
 
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Sepehr Khastoo. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="https://github.com/sepehrkhastoo" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/sepehr-khastoo-244a73383/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://open.spotify.com/user/31jtlgoungxhautkpt3nbdpxpkqu" target="_blank"><i class="fab fa-spotify"></i></a>
+    <a href="mailto:sepehr.khastoo@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
 <div class="notification" id="notification"><i class="fas fa-exclamation-circle"></i><span id="notificationText">There was an error sending your message.</span></div>
 
 <script>
-const canvas=document.getElementById('particlesCanvas');const ctx=canvas.getContext('2d');let particlesArray;
-canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+// Particles and trail canvas
+const canvas=document.getElementById('particlesCanvas');const ctx=canvas.getContext('2d');let particlesArray;canvas.width=window.innerWidth;canvas.height=window.innerHeight;
 class Particle{constructor(x,y){this.x=x;this.y=y;this.z=Math.random()*300;this.size=Math.random()*3+1;this.speedX=(Math.random()-0.5)*2;this.speedY=(Math.random()-0.5)*2;}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width)this.speedX*=-1;if(this.y<0||this.y>canvas.height)this.speedY*=-1;}draw(){const scale=300/(300+this.z);ctx.fillStyle='rgba(26,188,156,0.7)';ctx.beginPath();ctx.arc(this.x,this.y,this.size*scale,0,Math.PI*2);ctx.fill();}}
 function initParticles(){particlesArray=[];for(let i=0;i<150;i++){particlesArray.push(new Particle(Math.random()*canvas.width,Math.random()*canvas.height));}}
 function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particlesArray.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animateParticles);}
@@ -149,4 +189,3 @@ contactForm.addEventListener('submit',function(e){
 </script>
 </body>
 </html>
-
