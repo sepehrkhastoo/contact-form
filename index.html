@@ -1,173 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Links & Contact</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      min-height: 100vh;
-    }
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 40px;
-    }
-    .link-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 12px 20px;
-      border-radius: 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-    .link-btn:hover {
-      background: #1abc9c;
-      color: #0f2027;
-      box-shadow: 0 6px 12px #1abc9c;
-    }
-    form, .thank-you {
-      background: rgba(255 255 255 / 0.1);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      text-align: center;
-      transition: all 0.5s ease;
-    }
-    input, button {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-      outline: none;
-    }
-    input {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-    }
-    input:focus {
-      box-shadow: 0 0 10px #1abc9c;
-      background: rgba(255,255,255,0.2);
-    }
-    button {
-      background: #1abc9c;
-      color: #0f2027;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #16a085;
-    }
-    .thank-you {
-      display: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #1abc9c;
-      opacity: 0;
-      animation: fadeIn 1s forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    .loader {
-      border: 4px solid rgba(255,255,255,0.3);
-      border-top: 4px solid #1abc9c;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 10px auto;
-      display: none;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra 6 | Connect With Me</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary:#1abc9c;
+  --secondary:#8e44ad;
+  --light:#ffffff;
+  --dark:#0f2027;
+  --gray:#95a5a6;
+  --success:#2ecc71;
+  --error:#e74c3c;
+  --card-bg: rgba(255,255,255,0.08);
+  --transition: all 0.3s ease;
+  --glow:0 0 10px var(--primary),0 0 20px var(--secondary);
+  --neon:0 0 5px var(--primary),0 0 10px var(--secondary),0 0 20px var(--primary);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body{background:#0f2027;color:var(--light);overflow-x:hidden;position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px;}
+#particlesCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;}
+#trailCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
+.container{z-index:1;width:100%;max-width:1200px;display:flex;flex-direction:column;align-items:center;}
+header{text-align:center;margin-bottom:50px;}
+.avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;background:linear-gradient(45deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-size:3rem;color:white;box-shadow:var(--glow);}
+h1{font-size:3rem;font-weight:900;background:linear-gradient(to right,#ff6ec7,#1abc9c,#8e44ad,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:rainbowText 6s infinite alternate;}
+@keyframes rainbowText{0%{filter:hue-rotate(0deg);}100%{filter:hue-rotate(360deg);}}
+.subtitle{color:var(--gray);margin-top:20px;font-size:1.1rem;max-width:600px;line-height:1.6;text-align:center;}
+.content{display:grid;grid-template-columns:1fr;gap:30px;width:100%;}
+@media(min-width:768px){.content{grid-template-columns:1fr 1fr;}}
+.section-title{font-size:1.5rem;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.section-title i{color:var(--primary);}
+.links{display:flex;flex-direction:column;gap:15px;}
+.link-btn{display:flex;align-items:center;gap:15px;background:var(--card-bg);padding:15px 20px;border-radius:12px;color:white;text-decoration:none;font-size:1.1rem;font-weight:500;transition:var(--transition);box-shadow:0 4px 10px rgba(0,0,0,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.05);}
+.link-btn:hover{transform:translateY(-5px) scale(1.05);text-shadow: var(--neon);box-shadow:0 0 20px var(--primary),0 0 40px var(--secondary);background:rgba(26,188,156,0.15);}
+.link-btn i{font-size:1.4rem;width:24px;text-align:center;}
+.link-btn .link-text{flex:1;}
+.link-btn .link-arrow{opacity:0;transition:var(--transition);}
+.link-btn:hover .link-arrow{opacity:1;}
+.social-links{display:flex;gap:15px;justify-content:center;margin-top:20px;}
+.social-btn{width:50px;height:50px;border-radius:50%;background:var(--card-bg);display:flex;align-items:center;justify-content:center;color:var(--light);font-size:1.3rem;transition:var(--transition);box-shadow:0 4px 10px rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.05);}
+.social-btn:hover{transform:translateY(-5px) scale(1.2);text-shadow:var(--neon);box-shadow:0 0 15px var(--primary),0 0 30px var(--secondary);}
+form{background:var(--card-bg);padding:30px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.2);display:flex;flex-direction:column;gap:20px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.05);transition:0.5s;}
+.form-group{display:flex;flex-direction:column;gap:8px;text-align:left;}
+.form-group label{font-size:0.9rem;color:var(--gray);display:flex;align-items:center;gap:5px;}
+input,textarea{padding:15px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);font-size:1rem;outline:none;background:rgba(0,0,0,0.2);color:var(--light);transition:var(--transition);}
+input:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,188,156,0.3);}
+textarea{min-height:120px;resize:vertical;}
+button{padding:15px;border-radius:10px;border:none;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);background:linear-gradient(to right,var(--primary),var(--secondary));color:var(--dark);display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;}
+button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 20px var(--primary),0 0 40px var(--secondary);}
+.loader{border:3px solid rgba(255,255,255,0.2);border-top:3px solid var(--primary);border-radius:50%;width:30px;height:30px;animation:spin 1s linear infinite;margin:0 auto;display:none;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.thank-you{display:none;text-align:center;animation:fadeIn 0.5s forwards;}
+.thank-you i{font-size:3rem;color:var(--success);margin-bottom:15px;}
+.notification{position:fixed;bottom:20px;right:20px;padding:15px 20px;border-radius:10px;background:var(--error);color:white;box-shadow:0 5px 15px rgba(0,0,0,0.2);display:flex;align-items:center;gap:10px;transform:translateX(150%);transition:transform 0.3s ease;z-index:1000;}
+.notification.show{transform:translateX(0);}
+.notification.success{background:var(--success);}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.particle-burst{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--primary);pointer-events:none;z-index:9999;}
+</style>
 </head>
 <body>
+<canvas id="particlesCanvas"></canvas>
+<canvas id="trailCanvas"></canvas>
 
-  <h1>My Links</h1>
-  <div class="links">
-    <a href="" target="_blank" class="link-btn">LinkedIn</a>
-    <a href="https://github.com/sepehrkhastoo" target="_blank" class="link-btn">GitHub</a>
-    <a href="mailto:sepehr.khastoo@gmail.com" class="link-btn">Email</a>
-    <a href="https://open.spotify.com/user/31jtlgoungxhautkpt3nbdpxpkqu?si=613e8f9330ce4a3a" target="_blank" class="link-btn">Spotify</a>
-    <a href="" target="_blank" class="link-btn">Discord Server</a>
-  </div>
+<div class="container">
+<header>
+<div class="avatar"><i class="fas fa-user"></i></div>
+<h1>Connect With Me</h1>
+<p class="subtitle">Digital creator, student, and tech enthusiast. Let's build something amazing together!</p>
+</header>
 
-  <form id="contactForm">
-    <input type="text" name="entry.1327884208" placeholder="Your Name" required>
-    <input type="email" name="entry.996882" placeholder="Your Email" required>
-    <input type="tel" name="entry.2034252756" placeholder="Your Phone" required>
-    <button type="submit">Send</button>
-    <div class="loader" id="loader"></div>
-  </form>
+<div class="content">
+<div class="links-section">
+<h2 class="section-title"><i class="fas fa-link"></i> My Links</h2>
+<div class="links">
+<a href="https://www.linkedin.com/in/sepehr-khastoo-244a73383/" target="_blank" class="link-btn"><i class="fab fa-linkedin"></i><span class="link-text">LinkedIn</span><i class="fas fa-arrow-right link-arrow"></i></a>
+<a href="https://github.com/sepehrkhastoo" target="_blank" class="link-btn"><i class="fab fa-github"></i><span class="link-text">GitHub</span><i class="fas fa-arrow-right link-arrow"></i></a>
+<a href="mailto:sepehr.khastoo@gmail.com" class="link-btn"><i class="fas fa-envelope"></i><span class="link-text">Email</span><i class="fas fa-arrow-right link-arrow"></i></a>
+<a href="https://discord.com/users/mrrrobott" target="_blank" class="link-btn"><i class="fab fa-discord"></i><span class="link-text">Discord</span><i class="fas fa-arrow-right link-arrow"></i></a>
+<a href="https://open.spotify.com/user/31jtlgoungxhautkpt3nbdpxpkqu" target="_blank" class="link-btn"><i class="fab fa-spotify"></i><span class="link-text">Spotify</span><i class="fas fa-arrow-right link-arrow"></i></a>
+</div>
+<div class="social-links">
+<a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+<a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
 
-  <div class="thank-you" id="thankYouMessage">
-    Thank you! Your message has been sent successfully.
-  </div>
+<div class="form-section">
+<h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+<form id="contactForm">
+<div class="form-group"><label for="name"><i class="fas fa-user"></i> Your Name</label><input type="text" id="name" required></div>
+<div class="form-group"><label for="email"><i class="fas fa-envelope"></i> Email Address</label><input type="email" id="email" required></div>
+<div class="form-group"><label for="subject"><i class="fas fa-tag"></i> Subject</label><input type="text" id="subject" required></div>
+<div class="form-group"><label for="message"><i class="fas fa-comment"></i> Message</label><textarea id="message" required></textarea></div>
+<button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+</form>
+<div class="loader" id="loader"></div>
+<div class="thank-you" id="thankYou"><i class="fas fa-check-circle"></i><h2>Thank You!</h2><p>Your message has been sent successfully.</p></div>
+</div>
+</div>
+</div>
 
-  <script>
-    const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSeXliEceG3Clg3SDQ13khBnU6uTmpS7xz0duDE1GOXT-6NEew/formResponse';
-    const form = document.getElementById('contactForm');
-    const thankYou = document.getElementById('thankYouMessage');
-    const loader = document.getElementById('loader');
+<div class="notification" id="notification"><i class="fas fa-exclamation-circle"></i><span id="notificationText">There was an error sending your message.</span></div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      loader.style.display = 'block';
-      const formData = new FormData(form);
+<script>
+const canvas=document.getElementById('particlesCanvas');const ctx=canvas.getContext('2d');let particlesArray;
+canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+class Particle{constructor(x,y){this.x=x;this.y=y;this.z=Math.random()*300;this.size=Math.random()*3+1;this.speedX=(Math.random()-0.5)*2;this.speedY=(Math.random()-0.5)*2;}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width)this.speedX*=-1;if(this.y<0||this.y>canvas.height)this.speedY*=-1;}draw(){const scale=300/(300+this.z);ctx.fillStyle='rgba(26,188,156,0.7)';ctx.beginPath();ctx.arc(this.x,this.y,this.size*scale,0,Math.PI*2);ctx.fill();}}
+function initParticles(){particlesArray=[];for(let i=0;i<150;i++){particlesArray.push(new Particle(Math.random()*canvas.width,Math.random()*canvas.height));}}
+function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particlesArray.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animateParticles);}
+initParticles();animateParticles();window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;initParticles();});
 
-      fetch(googleFormURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      }).then(() => {
-        loader.style.display = 'none';
-        form.style.display = 'none';
-        thankYou.style.display = 'block';
-        form.reset();
-      }).catch(() => {
-        loader.style.display = 'none';
-        thankYou.textContent = 'Error sending message, please try again.';
-        thankYou.style.display = 'block';
-      });
-    });
-  </script>
+const trailCanvas=document.getElementById('trailCanvas');const trailCtx=trailCanvas.getContext('2d');
+trailCanvas.width=window.innerWidth;trailCanvas.height=window.innerHeight;
+let trailParticles=[];
+document.addEventListener('mousemove',e=>{trailParticles.push({x:e.clientX,y:e.clientY,life:30});});
+function animateTrail(){trailCtx.clearRect(0,0,trailCanvas.width,trailCanvas.height);trailParticles.forEach((p,i)=>{trailCtx.fillStyle=`rgba(26,188,156,${p.life/30})`;trailCtx.beginPath();trailCtx.arc(p.x,p.y,3,0,Math.PI*2);trailCtx.fill();p.life--;if(p.life<=0)trailParticles.splice(i,1);});requestAnimationFrame(animateTrail);}
+animateTrail();window.addEventListener('resize',()=>{trailCanvas.width=window.innerWidth;trailCanvas.height=window.innerHeight;});
 
+const notification=document.getElementById('notification');const notificationText=document.getElementById('notificationText');
+function showNotification(message,type='error'){notification.className='notification';notification.classList.add(type,'show');notificationText.textContent=message;setTimeout(()=>{notification.classList.remove('show');},3000);}
+
+function createParticleBurst(x,y){for(let i=0;i<40;i++){let p=document.createElement('div');p.className='particle-burst';document.body.appendChild(p);p.style.left=x+'px';p.style.top=y+'px';let angle=Math.random()*2*Math.PI;let speed=Math.random()*5+2;p.style.transition='all 0.8s ease';setTimeout(()=>{p.style.transform=`translate(${Math.cos(angle)*speed*60}px,${Math.sin(angle)*speed*60}px)`;p.style.opacity='0';},10);setTimeout(()=>{p.remove();},800);}}
+
+document.querySelectorAll('button, .link-btn, .social-btn').forEach(el=>{
+el.addEventListener('mouseenter',e=>{const rect=el.getBoundingClientRect();createParticleBurst(rect.left+rect.width/2,rect.top+rect.height/2);});
+});
+
+const contactForm=document.getElementById('contactForm');const loader=document.getElementById('loader');const thankYou=document.getElementById('thankYou');
+contactForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  loader.style.display='block';contactForm.style.display='none';
+  const googleFormURL="https://docs.google.com/forms/d/e/1FAIpQLScEN3TydAK_L6hh2lvIt0sJjHK3DmQ1GZhygSVd0b8qECLYLg/formResponse";
+  const formData=new FormData();
+  formData.append("entry.1879087805",document.getElementById('name').value);
+  formData.append("entry.1072331806",document.getElementById('email').value);
+  formData.append("entry.119008849",document.getElementById('subject').value);
+  formData.append("entry.1669835116",document.getElementById('message').value);
+  fetch(googleFormURL,{method:"POST",mode:"no-cors",body:formData}).then(()=>{
+    loader.style.display='none';thankYou.style.display='flex';
+    createParticleBurst(window.innerWidth/2,window.innerHeight/2);
+    showNotification("Message sent successfully!",'success');
+    setTimeout(()=>{thankYou.style.display='none';contactForm.style.display='flex';contactForm.reset();},4000);
+  }).catch(()=>{loader.style.display='none';contactForm.style.display='flex';showNotification("There was an error sending your message.",'error');});
+});
+</script>
 </body>
 </html>
-
-
