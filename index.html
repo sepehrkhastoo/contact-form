@@ -58,7 +58,7 @@ button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 20px var(--pr
 .notification{position:fixed;bottom:20px;right:20px;padding:15px 20px;border-radius:10px;background:var(--error);color:white;box-shadow:0 5px 15px rgba(0,0,0,0.2);display:flex;align-items:center;gap:10px;transform:translateX(150%);transition:transform 0.3s ease;z-index:1000;}
 .notification.show{transform:translateX(0);}
 .notification.success{background:var(--success);}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
 .particle-burst{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--primary);pointer-events:none;z-index:9999;}
 
 .footer{
@@ -107,8 +107,6 @@ button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 20px var(--pr
 <a href="https://www.linkedin.com/in/sepehr-khastoo-244a73383/" target="_blank" class="link-btn"><i class="fab fa-linkedin"></i><span class="link-text">LinkedIn</span><i class="fas fa-arrow-right link-arrow"></i></a>
 <a href="https://github.com/sepehrkhastoo" target="_blank" class="link-btn"><i class="fab fa-github"></i><span class="link-text">GitHub</span><i class="fas fa-arrow-right link-arrow"></i></a>
 <a href="mailto:sepehr.khastoo@gmail.com" class="link-btn"><i class="fas fa-envelope"></i><span class="link-text">Email</span><i class="fas fa-arrow-right link-arrow"></i></a>
-<a href="https://discord.com/users/mrrrobott" target="_blank" class="link-btn"><i class="fab fa-discord"></i><span class="link-text">Discord</span><i class="fas fa-arrow-right link-arrow"></i></a>
-<a href="https://open.spotify.com/user/31jtlgoungxhautkpt3nbdpxpkqu" target="_blank" class="link-btn"><i class="fab fa-spotify"></i><span class="link-text">Spotify</span><i class="fas fa-arrow-right link-arrow"></i></a>
 </div>
 <div class="social-links">
 <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
@@ -136,7 +134,6 @@ button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 20px var(--pr
   <div class="footer-links">
     <a href="https://github.com/sepehrkhastoo" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://www.linkedin.com/in/sepehr-khastoo-244a73383/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://open.spotify.com/user/31jtlgoungxhautkpt3nbdpxpkqu" target="_blank"><i class="fab fa-spotify"></i></a>
     <a href="mailto:sepehr.khastoo@gmail.com"><i class="fas fa-envelope"></i></a>
   </div>
 </footer>
@@ -181,9 +178,10 @@ contactForm.addEventListener('submit',function(e){
     createParticleBurst(window.innerWidth/2,window.innerHeight/2);
     showNotification("Message sent successfully!",'success');
     setTimeout(()=>{thankYou.style.display='none';contactForm.style.display='flex';contactForm.reset();},4000);
-  }).catch(()=>{loader.style.display='none';contactForm.style.display='flex';showNotification("There was an error sending your message.",'error');});
+  }).catch(()=>{
+    loader.style.display='none';contactForm.style.display='flex';showNotification("There was an error sending your message.",'error');
+  });
 });
 </script>
 </body>
 </html>
-
